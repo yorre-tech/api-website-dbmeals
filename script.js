@@ -51,10 +51,11 @@ function toonData(mealData) {
         divEl.appendChild(imageEl);
         div.appendChild(divEl);
         
-        foodCount += food;
-        
+        foodCount.push(food);
     });
-    console.count(foodCount);
+    for (let i = 0; i < foodCount.length; i++) {
+        console.log(foodCount[i] + " meal nummer " + (i + 1));
+    }
 }
 
 getMeals();
