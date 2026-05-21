@@ -44,26 +44,32 @@ function toonData(mealData) {
         image = element.strMealThumb;
 
         let divEl = document.createElement("div");
-        let foodEl = document.createElement("p");
-        let categoryEl = document.createElement("p");
-        let countryEl = document.createElement("p");
         let imageEl = document.createElement("img");
+        let infoDownEl = document.createElement("div");
+        let infoAboveEl = document.createElement("div");
+        let foodEl = document.createElement("span");
+        let categoryEl = document.createElement("span");
+        let countryEl = document.createElement("span");
 
+        imageEl.src = image;
+        imageEl.alt = food;
         foodEl.textContent = food;
         categoryEl.textContent = category;
         countryEl.textContent = country;
-        imageEl.src = image;
-        imageEl.alt = food + "name";
 
-        foodEl.classList.add("meal");
-        categoryEl.classList.add("meal");
-        countryEl.classList.add("meal");
-        imageEl.classList.add("image");
+        divEl.classList.add("meal-card");
+        infoDownEl.classList.add("meal-info-down");
+        infoAboveEl.classList.add("meal-info-above");
+        foodEl.classList.add("food-info");
+        categoryEl.classList.add("category-info");
+        countryEl.classList.add("country-info");
 
-        divEl.appendChild(foodEl);
-        divEl.appendChild(categoryEl);
-        divEl.appendChild(countryEl);
+        infoAboveEl.appendChild(foodEl);
+        infoDownEl.appendChild(categoryEl);
+        infoDownEl.appendChild(countryEl);
         divEl.appendChild(imageEl);
+        divEl.appendChild(infoAboveEl);
+        divEl.appendChild(infoDownEl);
         div.appendChild(divEl);
         
         foodCount.push(food);
