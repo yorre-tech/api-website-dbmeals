@@ -1,6 +1,8 @@
 let url = "https://www.themealdb.com/api/json/v1/1/search.php?s";
 
 const div = document.getElementById("meals");
+const searchInput = document.getElementById("mealsSearch");
+const searchButton = document.getElementById("getMeals");
 
 let foodCount = [];
 
@@ -21,7 +23,20 @@ async function getMeals() {
     }
 }
 
+searchButton.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`;
+    div.innerHTML = "";
+    foodCount = [];
+    getMeals();
+});
+
 function toonData(mealData) {
+    if (!mealData.meals) {
+        div.textContent = "Geen maaltijden gevonden.";
+        div.style.color = "black";
+        return;
+    }
     mealData.meals.forEach(element => {
         food = element.strMeal;
         category = element.strCategory;
